@@ -1,0 +1,48 @@
+{
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "build": "npm run build:css && remix build",
+    "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
+    "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
+    "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
+    "emulators": "firebase emulators:start --project remix-emulator --import=firebase-fixtures",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format-watch": "npm run format && onchange \"**/*.{js,jsx,ts,tsx,json,md}\" -- prettier --write {{changed}}",
+    "start": "remix-serve build"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.6.4",
+    "@heroicons/react": "^1.0.6",
+    "@netlify/functions": "^1.0.0",
+    "@remix-run/netlify": "^1.5.1",
+    "@remix-run/node": "1.5.1",
+    "@remix-run/react": "1.5.1",
+    "@remix-run/serve": "1.5.1",
+    "@tailwindcss/forms": "^0.5.2",
+    "autoprefixer": "^10.4.7",
+    "classnames": "^2.3.1",
+    "concurrently": "^7.2.1",
+    "cross-env": "^7.0.3",
+    "firebase": "^9.6.10",
+    "firebase-admin": "^10.0.2",
+    "postcss": "^8.4.14",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tailwindcss": "^3.0.24"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "1.5.1",
+    "@remix-run/eslint-config": "1.5.1",
+    "@types/react": "^17.0.43",
+    "@types/react-dom": "^17.0.14",
+    "eslint": "^8.12.0",
+    "firebase-tools": "^11.0.1",
+    "onchange": "^7.1.0",
+    "prettier": "^2.6.2",
+    "typescript": "^4.6.3"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
