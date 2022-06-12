@@ -5,13 +5,13 @@ type Props = {
 	onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
 }
 
-export default function LoginForm({ error, onSubmit }: Props) {
+export default function ForgotPasswordForm({ error, onSubmit }: Props) {
 	return (
 		<form method="post" onSubmit={onSubmit}>
 			<div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
 				<div className="sm:mx-auto sm:w-full sm:max-w-md">
 					<img className="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" />
-					<h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+					<h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Forgot Password</h2>
 				</div>
 
 				<p className="my-4 text-center text-sm italic text-red-700">{error ? "Sorry, we could not log you in. Please check your credentials" : ""}</p>

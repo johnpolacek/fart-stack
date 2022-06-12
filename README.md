@@ -45,6 +45,12 @@ Requests to the Firestore are made using the `firebase-admin`-SDK. You need to c
 
 `converter` and `datapoint` are utilities to allow typed Firestore data reads and writes.
 
+## Deploy to Netlify
+
+Install the Netlify CLI globally
+
+```npm i -g netlify-cli```
+
 ## Links
 
 - [Firestore Data Converters](https://firebase.google.com/docs/reference/node/firebase.firestore.FirestoreDataConverter) for typing
