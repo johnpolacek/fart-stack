@@ -3,12 +3,13 @@
   "sideEffects": false,
   "scripts": {
     "build": "npm run build:css && remix build",
-    "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
+    "build:css": "npm run generate:css -- --minify",
     "dev": "concurrently \"npm run dev:css\" \"npm run emulators\" \"cross-env NODE_ENV=development netlify dev\"",
-    "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
+    "dev:css": "npm run generate:css -- --watch",
     "emulators": "firebase emulators:start --project remix-emulator --import=firebase-fixtures",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "format-watch": "npm run format && onchange \"**/*.{js,jsx,ts,tsx,json,md}\" -- prettier --write {{changed}}",
+    "generate:css": "npx tailwindcss -o ./app/tailwind.css",
     "start": "remix-serve build"
   },
   "dependencies": {
