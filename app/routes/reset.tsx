@@ -1,11 +1,12 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node"
 import { json, redirect } from "@remix-run/node"
-import { useActionData, useLoaderData, useSubmit } from "@remix-run/react"
+
+import { useActionData, useLoaderData } from "@remix-run/react"
 import { useCallback, useState } from "react"
-import LoginForm from "~/components/forms/login"
+import ResetPasswordForm from "~/components/forms/reset"
 
 import * as firebaseRest from "~/firebase-rest"
-import { checkSessionCookie, signIn, signInWithToken } from "~/server/auth.server"
+import { checkSessionCookie } from "~/server/auth.server"
 import { commitSession, getSession } from "~/sessions"
 import { getRestConfig } from "~/server/firebase.server"
 
@@ -28,64 +29,66 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 interface ActionData {
   error?: string
+  verified?: boolean
 }
 export const action: ActionFunction = async ({ request }) => {
   const form = await request.formData()
-  const idToken = form.get("idToken")
-  let sessionCookie
+
   try {
-    if (typeof idToken === "string") {
-      sessionCookie = await signInWithToken(idToken)
-    } else {
-      const email = form.get("email")
-      const password = form.get("password")
-      const formError = json({ error: "Please fill all fields!" }, { status: 400 })
-      if (typeof email !== "string") return formError
-      if (typeof password !== "string") return formError
-      sessionCookie = await signIn(email, password)
+    const code = form.get("code")
+    const formError = json({ error: "Please fill all fields!" }, { status: 400 })
+    if (typeof code !== "string") {
+      return formError
     }
-    const session = await getSession(request.headers.get("cookie"))
-    session.set("session", sessionCookie)
-    return redirect("/", {
-      headers: {
-        "Set-Cookie": await commitSession(session),
-      },
-    })
   } catch (error) {
     console.error(error)
     return json<ActionData>({ error: String(error) }, { status: 401 })
   }
 }
 
-export default function Login() {
+export default function Reset() {
   const [clientAction, setClientAction] = useState<ActionData>()
   const action = useActionData<ActionData>()
   const restConfig = useLoaderData<LoaderData>()
-  const submit = useSubmit()
 
   const handleSubmit = useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault()
       // To avoid rate limiting, we sign in client side if we can.
-      const login = await firebaseRest.signInWithPassword(
+      const resetPassword = await firebaseRest.sendConfirmPasswordReset(
         {
-          email: event.currentTarget.email.value,
-          password: event.currentTarget.password.value,
-          returnSecureToken: true,
+          oobCode: event.currentTarget.code.value,
+          newPassword: event.currentTarget.newPassword.value,
         },
         restConfig
       )
-      if (firebaseRest.isError(login)) {
-        setClientAction({ error: login.error.message })
+      if (firebaseRest.isError(resetPassword)) {
+        setClientAction({ error: resetPassword.error.message })
+        return
+      } else {
+        setClientAction({ verified: true })
         return
       }
-      submit({ idToken: login.idToken }, { method: "post" })
     },
-    [submit, restConfig]
+    [restConfig]
   )
+
   return (
     <div>
-      <LoginForm onSubmit={handleSubmit} error={clientAction?.error || action?.error} />
+      {clientAction && clientAction.verified ? (
+        <div>
+          <p>Your password has been reset.</p>
+          <p>
+            Please{" "}
+            <a href="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
+              sign in
+            </a>
+            .
+          </p>
+        </div>
+      ) : (
+        <ResetPasswordForm onSubmit={handleSubmit} error={clientAction?.error || action?.error} />
+      )}
     </div>
   )
 }

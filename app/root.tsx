@@ -1,24 +1,15 @@
-import styles from "./tailwind.css";
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
-import {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react";
+import styles from "./tailwind.css"
+import type { LinksFunction, MetaFunction } from "@remix-run/node"
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react"
 import Layout from "./components/layout/layout"
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
   title: "Remix + Firebase",
   viewport: "width=device-width,initial-scale=1",
-});
+})
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: styles },
-];
+export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }]
 
 export default function App() {
   return (
@@ -29,12 +20,12 @@ export default function App() {
       </head>
       <body className="h-full">
         <Layout>
-					<Outlet />
-				</Layout>
+          <Outlet />
+        </Layout>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
       </body>
     </html>
-  );
+  )
 }
