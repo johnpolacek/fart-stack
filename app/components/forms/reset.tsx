@@ -10,6 +10,7 @@ export default function ResetPasswordForm({ error, onSubmit }: Props) {
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <img className="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Set New Password</h2>
+          <p>Check your email for a reset code then provide below.</p>
         </div>
 
         <p className="my-4 text-center text-sm italic text-red-700">{error ? "Sorry, we could not log you in. Please check your credentials" : ""}</p>
@@ -34,7 +35,7 @@ export default function ResetPasswordForm({ error, onSubmit }: Props) {
 
               <div>
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                  Password
+                  New Password
                 </label>
                 <div className="mt-1">
                   <input

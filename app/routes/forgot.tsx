@@ -30,7 +30,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 interface ActionData {
   error?: string
-  redirect?: string
+  sent?: boolean
 }
 export const action: ActionFunction = async ({ request }) => {
   const form = await request.formData()
@@ -68,17 +68,16 @@ export default function Forgot() {
         setClientAction({ error: resetPassword.error.message })
         return
       } else {
-        setClientAction({})
-        navigate("/reset")
+        setClientAction({ sent: true })
         return
       }
     },
-    [restConfig, navigate]
+    [restConfig]
   )
 
   return (
     <div>
-      <ForgotPasswordForm onSubmit={handleSubmit} error={clientAction?.error || action?.error} />
+      <ForgotPasswordForm onSubmit={handleSubmit} sent={clientAction?.sent} error={clientAction?.error || action?.error} />
     </div>
   )
 }
