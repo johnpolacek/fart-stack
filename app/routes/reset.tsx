@@ -1,6 +1,6 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node"
 import { json, redirect } from "@remix-run/node"
-
+import { useParams } from "@remix-run/react";
 import { useActionData, useLoaderData } from "@remix-run/react"
 import { useCallback, useState } from "react"
 import ResetPasswordForm from "~/components/forms/reset"
@@ -51,26 +51,32 @@ export default function Reset() {
   const action = useActionData<ActionData>()
   const restConfig = useLoaderData<LoaderData>()
 
+  const params = useParams();
+
   const handleSubmit = useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault()
-      // To avoid rate limiting, we sign in client side if we can.
-      const resetPassword = await firebaseRest.sendConfirmPasswordReset(
-        {
-          oobCode: event.currentTarget.code.value,
-          newPassword: event.currentTarget.newPassword.value,
-        },
-        restConfig
-      )
-      if (firebaseRest.isError(resetPassword)) {
-        setClientAction({ error: resetPassword.error.message })
-        return
+      if (params.oobCode) {
+        // To avoid rate limiting, we sign in client side if we can.
+        const resetPassword = await firebaseRest.sendConfirmPasswordReset(
+          {
+            oobCode: params.oobCode,
+            newPassword: event.currentTarget.newPassword.value,
+          },
+          restConfig
+        )
+        if (firebaseRest.isError(resetPassword)) {
+          setClientAction({ error: resetPassword.error.message })
+          return
+        } else {
+          setClientAction({ verified: true })
+          return
+        }
       } else {
-        setClientAction({ verified: true })
-        return
+        setClientAction({ error: "Reset code missing." })
       }
     },
-    [restConfig]
+    [restConfig, params.oobCode ]
   )
 
   return (

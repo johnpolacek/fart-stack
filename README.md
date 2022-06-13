@@ -51,6 +51,11 @@ Install the Netlify CLI globally
 
 ```npm i -g netlify-cli```
 
+## Set Custom Auth Email Templates
+
+Customize the action link URL:
+https://support.google.com/firebase/answer/7000714?authuser=0&hl=en#actionlink
+
 ## Links
 
 - [Firestore Data Converters](https://firebase.google.com/docs/reference/node/firebase.firestore.FirestoreDataConverter) for typing
