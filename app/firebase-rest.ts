@@ -101,7 +101,7 @@ export const sendPasswordResetEmail = async (
     domain: string
   }
 ) => {
-  const response: SendPasswordResetEmailResponse = await fetch(`${restConfig!.domain}/v1/accounts:resetPassword?key=${restConfig!.apiKey}`, {
+  const response: SendPasswordResetEmailResponse = await fetch(`${restConfig!.domain}/v1/accounts:sendOobCode?key=${restConfig!.apiKey}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
