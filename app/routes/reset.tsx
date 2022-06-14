@@ -91,7 +91,10 @@ export default function Reset() {
       {clientAction && clientAction.verified ? (
         <div className="text-center w-full py-8">
           <h3 className="font-bold text-2xl py-8">Your password has been reset</h3>
-          <a href="/login" className="py-2 px-4 rounded-md shadow-sm text-xl font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <a
+            href="/login"
+            className="py-2 px-4 rounded-md shadow-sm text-xl font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
             Sign In
           </a>
         </div>

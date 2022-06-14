@@ -1,3 +1,21 @@
+Create github project for user
+	- https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes
+
+Link project to Netlify
+	- https://www.netlify.com/blog/create-sites-programmatically-with-the-netlify-api/
+
+Add Firebase secrets to Netlify
+	- Manual - must link to Netlify
+	- Can use get secrets to verify
+
+OR Use Vercel instead:
+
+Link project to Vercel and add secrets
+	- https://vercel.com/docs/integrations/reference#using-the-vercel-api/interacting-with-vercel-projects
+
+Deploy
+
+
 # Firebase Auth & Firestore
 
 This project demonstrates how to use Firebase (Auth and Firestore) with Remix.
