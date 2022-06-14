@@ -4,7 +4,6 @@ type Props = {
 }
 
 export default function ResetPasswordForm({ error, onSubmit }: Props) {
-
   return (
     <form method="post" onSubmit={onSubmit}>
       <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -19,13 +18,13 @@ export default function ResetPasswordForm({ error, onSubmit }: Props) {
           <div className="bg-white pt-8 pb-4 px-6 shadow rounded-lg sm:px-10">
             <div className="space-y-6">
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700">
                   New Password
                 </label>
                 <div className="mt-1">
                   <input
-                    id="password"
-                    name="password"
+                    id="newPassword"
+                    name="newPassword"
                     type="password"
                     autoComplete="new-password"
                     required

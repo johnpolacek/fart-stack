@@ -1,6 +1,6 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node"
 import { json, redirect } from "@remix-run/node"
-import { useParams } from "@remix-run/react";
+import { useSearchParams } from "@remix-run/react"
 import { useActionData, useLoaderData } from "@remix-run/react"
 import { useCallback, useState } from "react"
 import ResetPasswordForm from "~/components/forms/reset"
@@ -24,6 +24,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     return redirect("/", { headers })
   }
   const { apiKey, domain } = getRestConfig()
+  console.log({ request })
   return json<LoaderData>({ apiKey, domain }, { headers })
 }
 
@@ -50,17 +51,23 @@ export default function Reset() {
   const [clientAction, setClientAction] = useState<ActionData>()
   const action = useActionData<ActionData>()
   const restConfig = useLoaderData<LoaderData>()
-
-  const params = useParams();
+  console.log({ restConfig })
+  const [searchParams] = useSearchParams()
+  const oobCode = searchParams.getAll("oobCode")[0]
+  console.log(oobCode)
+  if (typeof window !== "undefined") {
+    console.log(window.location.search)
+  }
 
   const handleSubmit = useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault()
-      if (params.oobCode) {
+      console.log("handleSubmit")
+      if (oobCode) {
         // To avoid rate limiting, we sign in client side if we can.
         const resetPassword = await firebaseRest.sendConfirmPasswordReset(
           {
-            oobCode: params.oobCode,
+            oobCode: oobCode,
             newPassword: event.currentTarget.newPassword.value,
           },
           restConfig
@@ -76,21 +83,17 @@ export default function Reset() {
         setClientAction({ error: "Reset code missing." })
       }
     },
-    [restConfig, params.oobCode ]
+    [restConfig, oobCode]
   )
 
   return (
     <div>
       {clientAction && clientAction.verified ? (
-        <div>
-          <p>Your password has been reset.</p>
-          <p>
-            Please{" "}
-            <a href="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
-              sign in
-            </a>
-            .
-          </p>
+        <div className="text-center w-full py-8">
+          <h3 className="font-bold text-2xl py-8">Your password has been reset</h3>
+          <a href="/login" className="py-2 px-4 rounded-md shadow-sm text-xl font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Sign In
+          </a>
         </div>
       ) : (
         <ResetPasswordForm onSubmit={handleSubmit} error={clientAction?.error || action?.error} />

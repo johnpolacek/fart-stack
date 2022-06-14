@@ -18,7 +18,7 @@ export default function ForgotPasswordForm({ error, sent, onSubmit }: Props) {
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
             <div className="space-y-6">
-              {true ? (
+              {sent ? (
                 <div className="w-full text-center py-8">
                   <p className="font-bold text-2xl pb-4">Check your inbox</p>
                   <p className="text-gray-800 italic">Password reset email has been sent.</p>

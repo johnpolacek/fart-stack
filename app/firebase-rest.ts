@@ -138,6 +138,8 @@ export const sendConfirmPasswordReset = async (
     domain: string
   }
 ) => {
+  console.log("sendConfirmPasswordReset")
+  console.log({ body })
   const response: SendConfirmPasswordResetResponse = await fetch(`${restConfig!.domain}/v1/accounts:resetPassword?key=${restConfig!.apiKey}`, {
     method: "POST",
     headers: {
