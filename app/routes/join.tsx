@@ -1,6 +1,7 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node"
 import { json, redirect } from "@remix-run/node"
 import { Form, Link, useActionData } from "@remix-run/react"
+import SignupForm from "~/components/forms/auth/signup"
 
 import { checkSessionCookie, signUp } from "~/server/auth.server"
 import { commitSession, getSession } from "~/sessions"
@@ -49,19 +50,7 @@ export default function Login() {
   const action = useActionData<ActionData>()
   return (
     <div>
-      <h1>Join</h1>
-      {action?.error && <p>{action.error}</p>}
-      <Form method="post">
-        <input style={{ display: "block" }} name="name" placeholder="Peter" type="text" />
-        <input style={{ display: "block" }} name="email" placeholder="you@example.com" type="email" />
-        <input style={{ display: "block" }} name="password" placeholder="password" type="password" />
-        <button style={{ display: "block" }} type="submit">
-          Join
-        </button>
-      </Form>
-      <p>
-        Do you want to <Link to="/login">login</Link>?
-      </p>
+      <SignupForm error={action ?  action.error : null} />
     </div>
   )
 }

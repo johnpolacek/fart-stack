@@ -1,6 +1,6 @@
 import type { LoaderFunction } from "@remix-run/node"
 import { redirect } from "@remix-run/node"
-import { Form } from "@remix-run/react"
+import LogoutForm from "~/components/forms/auth/logout"
 
 import { destroySession, getSession } from "~/sessions"
 
@@ -14,11 +14,7 @@ export const action: LoaderFunction = async ({ request }) => {
 export default function Logout() {
   return (
     <div>
-      <h1>Logout</h1>
-      <p>Press the button below to log out.</p>
-      <Form method="post">
-        <button type="submit">Logout</button>
-      </Form>
+      <LogoutForm />
     </div>
   )
 }

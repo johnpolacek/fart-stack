@@ -3,7 +3,7 @@ import { json, redirect } from "@remix-run/node"
 import { useSearchParams } from "@remix-run/react"
 import { useActionData, useLoaderData } from "@remix-run/react"
 import { useCallback, useState } from "react"
-import ResetPasswordForm from "~/components/forms/reset"
+import ResetPasswordForm from "~/components/forms/auth/reset"
 
 import * as firebaseRest from "~/firebase-rest"
 import { checkSessionCookie } from "~/server/auth.server"

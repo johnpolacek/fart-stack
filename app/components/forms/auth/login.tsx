@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react"
+import FormHeader from "./header"
 
 type Props = {
   error?: string | null
@@ -9,11 +10,7 @@ export default function LoginForm({ error, onSubmit }: Props) {
   return (
     <form method="post" onSubmit={onSubmit}>
       <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <img className="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" />
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
-        </div>
-
+        <FormHeader>Sign in to your account</FormHeader>
         <p className="my-4 text-center text-sm italic text-red-700">{error ? "Sorry, we could not log you in. Please check your credentials" : ""}</p>
 
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -71,7 +68,7 @@ export default function LoginForm({ error, onSubmit }: Props) {
                   type="submit"
                   className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                  Sign in
+                  Sign In
                 </button>
               </div>
             </div>

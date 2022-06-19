@@ -2,7 +2,7 @@ import type { ActionFunction, LoaderFunction } from "@remix-run/node"
 import { json, redirect } from "@remix-run/node"
 import { useActionData, useLoaderData, useSubmit } from "@remix-run/react"
 import { useCallback, useState } from "react"
-import LoginForm from "~/components/forms/login"
+import LoginForm from "~/components/forms/auth/login"
 
 import * as firebaseRest from "~/firebase-rest"
 import { checkSessionCookie, signIn, signInWithToken } from "~/server/auth.server"

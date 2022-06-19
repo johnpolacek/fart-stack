@@ -1,19 +1,34 @@
-Create github project for user
-	- https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes
+https://www.twilio.com/blog/how-to-build-a-cli-with-node-js
 
-Link project to Netlify
-	- https://www.netlify.com/blog/create-sites-programmatically-with-the-netlify-api/
+https://itnext.io/how-to-create-your-own-typescript-cli-with-node-js-1faf7095ef89
+
+First 
+```
+npx netlify login
+```
+
+```
+npm install -g firebase-tools
+```
+
+Use Netlify CLI
 
 Add Firebase secrets to Netlify
 	- Manual - must link to Netlify
 	- Can use get secrets to verify
 
-OR Use Vercel instead:
+	
+Requires Vercel Integration
+https://vercel.com/docs/integrations/create-integration
+
+Create github project for user
+	- https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes
 
 Link project to Vercel and add secrets
 	- https://vercel.com/docs/integrations/reference#using-the-vercel-api/interacting-with-vercel-projects
 
 Deploy
+
 
 
 # Firebase Auth & Firestore

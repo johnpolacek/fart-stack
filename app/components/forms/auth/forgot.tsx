@@ -1,3 +1,5 @@
+import FormHeader from "./header"
+
 type Props = {
   error?: string | null
   sent?: boolean | null
@@ -8,10 +10,7 @@ export default function ForgotPasswordForm({ error, sent, onSubmit }: Props) {
   return (
     <form method="post" onSubmit={onSubmit}>
       <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-md mb-8">
-          <img className="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" />
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Forgot Password</h2>
-        </div>
+        <FormHeader>Forgot Password</FormHeader>
 
         {error && <p className="my-4 text-center text-sm italic text-red-700">Sorry, we could not log you in. Please check your credentials</p>}
 

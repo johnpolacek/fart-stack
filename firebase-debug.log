@@ -1,0 +1,66 @@
+[debug] [2022-06-19T19:08:58.679Z] ----------------------------------------------------------------------
+[debug] [2022-06-19T19:08:58.681Z] Command:       /Users/johnpolacek/.nvm/versions/node/v14.19.1/bin/node /Users/johnpolacek/Sites/localhost/remix-firebase-tailwind/node_modules/.bin/firebase emulators:start --project remix-emulator --import=firebase-fixtures
+[debug] [2022-06-19T19:08:58.681Z] CLI Version:   11.0.1
+[debug] [2022-06-19T19:08:58.681Z] Platform:      darwin
+[debug] [2022-06-19T19:08:58.681Z] Node Version:  v14.19.1
+[debug] [2022-06-19T19:08:58.685Z] Time:          Sun Jun 19 2022 14:08:58 GMT-0500 (Central Daylight Time)
+[debug] [2022-06-19T19:08:58.685Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-06-19T19:08:58.688Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-06-19T19:08:58.766Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] Failed to authenticate, have you run firebase login?
+[warn] ⚠  emulators: You are not currently authenticated so some features may not work correctly. Please run firebase login to authenticate the CLI. 
+[debug] [2022-06-19T19:08:58.996Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2022-06-19T19:08:58.997Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2022-06-19T19:08:59.136Z] java version "18.0.1.1" 2022-04-22
+
+[debug] [2022-06-19T19:08:59.136Z] Java(TM) SE Runtime Environment (build 18.0.1.1+2-6)
+Java HotSpot(TM) 64-Bit Server VM (build 18.0.1.1+2-6, mixed mode, sharing)
+
+[debug] [2022-06-19T19:08:59.141Z] Parsed Java major version: 18
+[info] i  emulators: Starting emulators: auth, firestore {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, firestore"}}
+[debug] [2022-06-19T19:08:59.148Z] [hub] writing locator at /var/folders/6_/yl8myn5s481g8789qm_1b6280000gn/T/hub-remix-emulator.json
+[warn] ⚠  firestore: Did not find a Cloud Firestore rules file specified in a firebase.json config file. {"metadata":{"emulator":{"name":"firestore"},"message":"Did not find a Cloud Firestore rules file specified in a firebase.json config file."}}
+[warn] ⚠  firestore: The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration. {"metadata":{"emulator":{"name":"firestore"},"message":"The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration."}}
+[debug] [2022-06-19T19:08:59.154Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2022-06-19T19:08:59.155Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-06-19T19:08:59.155Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","/Users/johnpolacek/.cache/firebase/emulators/cloud-firestore-emulator-v1.14.3.jar","--host","localhost","--port",8080],"optionalArgs":["port","webchannel_port","host","rules","functions_emulator","seed_from_export"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"/Users/johnpolacek/.cache/firebase/emulators/cloud-firestore-emulator-v1.14.3.jar\",\"--host\",\"localhost\",\"--port\",8080],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"functions_emulator\",\"seed_from_export\"],\"joinArgs\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[debug] [2022-06-19T19:09:00.278Z] Jun 19, 2022 2:09:00 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://localhost:51720
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jun 19, 2022 2:09:00 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start\nINFO: Started WebSocket server on ws://localhost:51720\n"}}
+[debug] [2022-06-19T19:09:00.303Z] API endpoint: http:// {"metadata":{"emulator":{"name":"firestore"},"message":"API endpoint: http://"}}
+[debug] [2022-06-19T19:09:00.304Z] localhost:8080
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=localhost:8080
+
+Dev App Server is now running.
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"localhost:8080\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\n\n   export FIRESTORE_EMULATOR_HOST=localhost:8080\n\nDev App Server is now running.\n\n"}}
+[warn] ⚠  auth: Skipped importing config because /Users/johnpolacek/Sites/localhost/remix-firebase-tailwind/firebase-fixtures/auth/config.json does not exist. {"metadata":{"emulator":{"name":"database"},"message":"Skipped importing config because /Users/johnpolacek/Sites/localhost/remix-firebase-tailwind/firebase-fixtures/auth/config.json does not exist."}}
+[info] i  auth: Importing accounts from /Users/johnpolacek/Sites/localhost/remix-firebase-tailwind/firebase-fixtures/auth/accounts.json {"metadata":{"emulator":{"name":"database"},"message":"Importing accounts from /Users/johnpolacek/Sites/localhost/remix-firebase-tailwind/firebase-fixtures/auth/accounts.json"}}
+[debug] [2022-06-19T19:09:07.209Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-06-19T19:09:07.209Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2022-06-19T19:09:07.209Z] Starting Emulator UI with command {"binary":"node","args":["--dns-result-order=ipv4first","/Users/johnpolacek/.cache/firebase/emulators/ui-v1.7.0/server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"--dns-result-order=ipv4first\",\"/Users/johnpolacek/.cache/firebase/emulators/ui-v1.7.0/server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2022-06-19T19:09:07.314Z] Web / API server started at localhost:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at localhost:4000\n"}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://localhost:4000                │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬─────────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI             │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Authentication │ localhost:9099 │ http://localhost:4000/auth      │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Firestore      │ localhost:8080 │ http://localhost:4000/firestore │
+└────────────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at localhost:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 

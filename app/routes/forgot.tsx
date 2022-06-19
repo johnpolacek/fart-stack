@@ -1,10 +1,9 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node"
 import { json, redirect } from "@remix-run/node"
-import { useNavigate } from "react-router-dom"
 
 import { useActionData, useLoaderData } from "@remix-run/react"
 import { useCallback, useState } from "react"
-import ForgotPasswordForm from "~/components/forms/forgot"
+import ForgotPasswordForm from "~/components/forms/auth/forgot"
 
 import * as firebaseRest from "~/firebase-rest"
 import { checkSessionCookie } from "~/server/auth.server"
@@ -51,7 +50,6 @@ export default function Forgot() {
   const [clientAction, setClientAction] = useState<ActionData>()
   const action = useActionData<ActionData>()
   const restConfig = useLoaderData<LoaderData>()
-  let navigate = useNavigate()
 
   const handleSubmit = useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
